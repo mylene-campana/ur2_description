@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<robot name="object"> <!-- simple ur2 robot -->
+  <link name="base_link"> <!-- required name for robot.py -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -1.57079632679 0"/> <!-- centered by default -->
+      <geometry>
+        <cylinder length="3" radius="0.02"/>
+      </geometry>
+      <material name="Green">
+        <color rgba="0 0.8 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -1.57079632679 0"/>
+      <geometry>
+        <cylinder length="3" radius="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="j_object_one" type="prismatic">
+    <parent link="base_link"/>
+    <child link="l_object_one"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="1" lower="-1.5" upper="1.5" velocity="1"/>
+  </joint>
+        
+  <link name="l_object_one"/> <!-- empty-->
+
+  <joint name="j_object_two" type="revolute">
+    <parent link="l_object_one"/>
+    <child link="l_object_two"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="1" lower="0.1" upper="3" velocity="1"/> <!-- avoid colliding previous body -->
+  </joint>
+        
+  <link name="l_object_two"> <!-- lower part -->
+    <visual>
+      <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
+      <geometry>
+        <cylinder length="0.8" radius="0.05"/>
+      </geometry>
+      <material name="Red">
+        <color rgba="0.8 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
+      <geometry>
+        <cylinder length="0.8" radius="0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="j_object_three" type="revolute">
+    <parent link="l_object_two"/>
+    <child link="l_object_three"/>
+    <origin xyz="0.8 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="1" lower="-2.9" upper="2.9" velocity="1"/> <!-- avoid colliding previous body -->
+  </joint>
+        
+  <link name="l_object_three">
+    <visual>
+      <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
+      <geometry>
+        <cylinder length="0.8" radius="0.05"/>
+      </geometry>
+      <material name="Red">
+        <color rgba="0.8 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
+      <geometry>
+        <cylinder length="0.8" radius="0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="j_object_four" type="fixed">
+    <parent link="l_object_two"/>
+    <child link="l_sphere1"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  
+  <link name="l_sphere1">
+    <visual> <!-- just 1st visual sphere -->
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <material name="Blue">
+        <color rgba="0 0 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="j_object_five" type="fixed">
+    <parent link="l_object_two"/>
+    <child link="l_sphere2"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  
+  <link name="l_sphere2">
+    <visual> <!-- just 2nd visual sphere -->
+      <origin xyz="0.8 0 0"/>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <material name="Blue">
+        <color rgba="0 0 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="j_object_six" type="fixed">
+    <parent link="l_object_three"/>
+    <child link="l_sphere3"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  
+  <link name="l_sphere3">
+    <visual> <!-- just 3rd visual sphere -->
+      <origin xyz="0.8 0 0"/>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <material name="Blue">
+        <color rgba="0 0 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+</robot>
