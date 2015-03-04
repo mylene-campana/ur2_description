@@ -6,5 +6,11 @@
 		      link2="l_object_two" />
  <disable_collisions link1="l_object_two"
 		      link2="l_object_three" />
+ <disable_collisions link1="l_object_three"
+		      link2="l_sphere3" />
+ <disable_collisions link1="l_object_two"
+		      link2="l_sphere2" />
+ <disable_collisions link1="l_object_three"
+		      link2="l_sphere2" />
 
 </robot>

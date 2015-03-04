@@ -10,43 +10,53 @@ from hpp.corbaserver import Client
 import time
 import sys
 import matplotlib.pyplot as plt
+import numpy as np
+
 sys.path.append('/local/mcampana/devel/hpp/src/test-hpp/script')
 robot = Robot ('ur2_robot')
 ps = ProblemSolver (robot)
 cl = robot.client
-#Viewer.withFloor = True
 r = Viewer (ps)
 pp = PathPlayer (cl, r)
 
 # Load box obstacle in HPP for collision avoidance #
 cl.obstacle.loadObstacleModel('ur2_description','cylinder_obstacle','')
-r.loadObstacleModel ("ur2_description","cylinder_obstacle","cylinder_obstacle") # ??
+r.loadObstacleModel ("ur2_description","cylinder_obstacle","cylinder_obstacle")
 
 
 # q = [x, y] # limits in URDF file
 q1 = [-0.2, 1.6, -0.4]; q2 = [-0.2, 0.4, 0.5]
 cl.problem.setInitialConfig (q1); cl.problem.addGoalConfig (q2)
-cl.problem.solve ()
-cl.problem.optimizePath(1)
 
+ps.solve ()
+len(ps.getWaypoints (0))
+ps.pathLength(0)
+begin=time.time()
+ps.optimizePath (0)
+end=time.time()
+print "Optim time: "+str(end-begin)
+cl.problem.getIterationNumber ()
+ps.pathLength(1)
 
 begin=time.time()
-cl.problem.solve ()
+ps.optimizePath (1)
 end=time.time()
-print "Solving time: "+str(end-begin)
+print "Optim2 time: "+str(end-begin)
+cl.problem.getIterationNumber ()
+ps.pathLength(2)
 
-len(cl.problem.nodes ())
-cl.problem.pathLength(0)
-cl.problem.pathLength(1)
+
+# Constraint computation verification :
+nSegm=4 # Number of the segment where collision has occured
+beta=607022 # Collision abcisse on segment
+qconstrx0 = np.array(ps.getWaypoints (0)[nSegm])*(1-beta) + beta*np.array(ps.getWaypoints (0)[nSegm+1])
+
 
 #####################################################################
 
 ## DEBUG commands
-robot.setCurrentConfig(q2)
-robot.collisionTest()
-robot.distancesToCollision()
+robot.isConfigValid(q1)
 from numpy import *
 argmin(robot.distancesToCollision()[0])
-r( cl.problem.configAtDistance(0,5) )
-ps.clearRoadmap ()
+r( ps.configAtParam(0,5) )
 
