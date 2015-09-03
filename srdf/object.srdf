@@ -13,4 +13,16 @@
  <disable_collisions link1="l_object_three"
 		      link2="l_sphere2" />
 
+<disable_collisions link1="base_link"
+		      link2="l_object_second_arm_one" />
+<disable_collisions link1="l_object_two"
+		      link2="l_object_second_arm_one" />
+<disable_collisions link1="l_object_second_arm_one"
+		      link2="l_object_second_arm_two" />
+<disable_collisions link1="l_object_second_arm_one"
+		      link2="l_sphere2_second_arm" />
+<disable_collisions link1="l_object_second_arm_two"
+		      link2="l_sphere2_second_arm" />
+<disable_collisions link1="l_object_second_arm_two"
+		      link2="l_sphere3_second_arm" />
 </robot>

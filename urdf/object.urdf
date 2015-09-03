@@ -33,10 +33,10 @@
     <child link="l_object_two"/>
     <origin xyz="0 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit effort="1" lower="0.1" upper="3" velocity="1"/> <!-- avoid colliding previous body -->
+    <limit effort="1" lower="-2" upper="3" velocity="1"/> <!-- avoid colliding previous body -->
   </joint>
         
-  <link name="l_object_two"> <!-- lower part -->
+  <link name="l_object_two">
     <visual>
       <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
       <geometry>
@@ -129,6 +129,107 @@
   </joint>
   
   <link name="l_sphere3">
+    <visual> <!-- just 3rd visual sphere -->
+      <origin xyz="0.8 0 0"/>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <material name="Blue">
+        <color rgba="0 0 0.8 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.8 0 0"/>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint name="j_object_second_arm_one" type="revolute">
+    <parent link="l_object_one"/>
+    <child link="l_object_second_arm_one"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="1" lower="-3.14" upper="1.7" velocity="1"/> <!-- avoid colliding previous body -->
+  </joint>
+
+<link name="l_object_second_arm_one">
+    <visual>
+      <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
+      <geometry>
+        <cylinder length="0.8" radius="0.05"/>
+      </geometry>
+      <material name="Red">
+        <color rgba="0.8 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
+      <geometry>
+        <cylinder length="0.8" radius="0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="j_object_second_arm_two" type="revolute">
+    <parent link="l_object_second_arm_one"/>
+    <child link="l_object_second_arm_two"/>
+    <origin xyz="0.8 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="1" lower="-2.9" upper="2.9" velocity="1"/> <!-- avoid colliding previous body -->
+  </joint>
+        
+  <link name="l_object_second_arm_two">
+    <visual>
+      <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
+      <geometry>
+        <cylinder length="0.8" radius="0.05"/>
+      </geometry>
+      <material name="Red">
+        <color rgba="0.8 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
+      <geometry>
+        <cylinder length="0.8" radius="0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="j_sphere2_second_arm" type="fixed">
+    <parent link="l_object_second_arm_one"/>
+    <child link="l_sphere2_second_arm"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  
+  <link name="l_sphere2_second_arm">
+    <visual> <!-- just 2nd visual sphere -->
+      <origin xyz="0.8 0 0"/>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <material name="Blue">
+        <color rgba="0 0 0.8 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.8 0 0"/>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="j_sphere3_second_arm" type="fixed">
+    <parent link="l_object_second_arm_two"/>
+    <child link="l_sphere3_second_arm"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  
+  <link name="l_sphere3_second_arm">
     <visual> <!-- just 3rd visual sphere -->
       <origin xyz="0.8 0 0"/>
       <geometry>
