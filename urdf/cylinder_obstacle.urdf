@@ -15,7 +15,7 @@
     </collision>
   </link>
 
-  <joint name="j_cylinder2" type="fixed">
+ <!--<joint name="j_cylinder2" type="fixed">
     <parent link="obstacle_base"/>
     <child link="l_cylinder2"/>
     <origin xyz="0 0 0"/>
@@ -55,5 +55,5 @@
         <cylinder length="0.4" radius="0.2"/>
       </geometry>
     </collision>
-  </link>
+  </link>-->
 </robot>
