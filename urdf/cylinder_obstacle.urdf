@@ -6,6 +6,9 @@
       <geometry>
         <cylinder length="0.4" radius="0.2"/>
       </geometry>
+      <material name="Orange">
+        <color rgba="1 0.5 0 0.2"/>
+      </material>
     </visual>
     <collision>
       <origin xyz="0.6 1.1 0"/>
@@ -27,6 +30,9 @@
       <geometry>
         <cylinder length="0.4" radius="0.2"/>
       </geometry>
+      <material name="Orange">
+        <color rgba="1 0.5 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin xyz="-0.3 -1.1 0"/>
@@ -48,6 +54,9 @@
       <geometry>
         <cylinder length="0.4" radius="0.2"/>
       </geometry>
+      <material name="Orange">
+        <color rgba="1 0.5 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin xyz="0.42 -1.2 0"/>

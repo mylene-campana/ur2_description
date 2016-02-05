@@ -4,28 +4,35 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 -1.57079632679 0"/> <!-- centered by default -->
       <geometry>
-        <cylinder length="3" radius="0.02"/>
+        <!--<cylinder length="3" radius="0.02"/>-->
+		<cylinder length="1" radius="0.02"/>
       </geometry>
-      <material name="Green">
-        <color rgba="0 0.8 0 1"/>
+      <material name="Gray">
+        <color rgba="0.3 0.3 0.3 1"/>
       </material>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 -1.57079632679 0"/>
       <geometry>
-        <cylinder length="3" radius="0.02"/>
+        <cylinder length="1" radius="0.02"/>
       </geometry>
     </collision>
   </link>
 
-  <joint name="j_object_one" type="prismatic">
+  <!--<joint name="j_object_one" type="prismatic">
     <parent link="base_link"/>
     <child link="l_object_one"/>
     <origin xyz="0 0 0"/>
     <axis xyz="1 0 0"/>
     <limit effort="1" lower="-1.5" upper="1.5" velocity="1"/>
+  </joint>-->
+
+  <joint name="j_object_one" type="fixed">
+    <parent link="base_link"/>
+    <child link="l_object_one"/>
+    <origin xyz="-0.2 0 0"/>
   </joint>
-        
+      
   <link name="l_object_one"/> <!-- empty-->
 
   <joint name="j_object_two" type="revolute">
@@ -33,14 +40,14 @@
     <child link="l_object_two"/>
     <origin xyz="0 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit effort="1" lower="-2" upper="3" velocity="1"/> <!-- avoid colliding previous body -->
+    <limit effort="1" lower="-3.14159" upper="3.14159" velocity="1"/> <!-- avoid colliding previous body -->
   </joint>
         
   <link name="l_object_two">
     <visual>
       <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
       <geometry>
-        <cylinder length="0.8" radius="0.05"/>
+        <cylinder length="0.72" radius="0.05"/>
       </geometry>
       <material name="Red">
         <color rgba="0.8 0 0 1"/>
@@ -49,7 +56,7 @@
     <collision>
       <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
       <geometry>
-        <cylinder length="0.8" radius="0.05"/>
+        <cylinder length="0.72" radius="0.05"/>
       </geometry>
     </collision>
   </link>
@@ -59,14 +66,14 @@
     <child link="l_object_three"/>
     <origin xyz="0.8 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit effort="1" lower="-2.9" upper="2.9" velocity="1"/> <!-- avoid colliding previous body -->
+    <limit effort="1" lower="-3.14159" upper="3.14159" velocity="1"/> <!-- avoid colliding previous body -->
   </joint>
         
   <link name="l_object_three">
     <visual>
       <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
       <geometry>
-        <cylinder length="0.8" radius="0.05"/>
+        <cylinder length="0.72" radius="0.05"/>
       </geometry>
       <material name="Red">
         <color rgba="0.8 0 0 1"/>
@@ -75,7 +82,7 @@
     <collision>
       <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
       <geometry>
-        <cylinder length="0.8" radius="0.05"/>
+        <cylinder length="0.72" radius="0.05"/>
       </geometry>
     </collision>
   </link>
@@ -152,14 +159,14 @@
     <child link="l_object_second_arm_one"/>
     <origin xyz="0 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit effort="1" lower="-3.14" upper="1.7" velocity="1"/> <!-- avoid colliding previous body -->
+    <limit effort="1" lower="-3.14159" upper="3.14159" velocity="1"/> <!-- avoid colliding previous body -->
   </joint>
 
 <link name="l_object_second_arm_one">
     <visual>
       <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
       <geometry>
-        <cylinder length="0.8" radius="0.05"/>
+        <cylinder length="0.72" radius="0.05"/>
       </geometry>
       <material name="Red">
         <color rgba="0.8 0 0 1"/>
@@ -168,7 +175,7 @@
     <collision>
       <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
       <geometry>
-        <cylinder length="0.8" radius="0.05"/>
+        <cylinder length="0.72" radius="0.05"/>
       </geometry>
     </collision>
   </link>
@@ -178,14 +185,14 @@
     <child link="l_object_second_arm_two"/>
     <origin xyz="0.8 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit effort="1" lower="-2.9" upper="2.9" velocity="1"/> <!-- avoid colliding previous body -->
+    <limit effort="1" lower="-3.14159" upper="3.14159" velocity="1"/> <!-- avoid colliding previous body -->
   </joint>
         
   <link name="l_object_second_arm_two">
     <visual>
       <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
       <geometry>
-        <cylinder length="0.8" radius="0.05"/>
+        <cylinder length="0.72" radius="0.05"/>
       </geometry>
       <material name="Red">
         <color rgba="0.8 0 0 1"/>
@@ -194,7 +201,7 @@
     <collision>
       <origin xyz="0.4 0 0" rpy="0 -1.57079632679 0"/>
       <geometry>
-        <cylinder length="0.8" radius="0.05"/>
+        <cylinder length="0.72" radius="0.05"/>
       </geometry>
     </collision>
   </link>
