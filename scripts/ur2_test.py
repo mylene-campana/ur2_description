@@ -31,13 +31,14 @@ cl.problem.setInitialConfig (q1); cl.problem.addGoalConfig (q2)
 # config inversion ??? viewer and hpp don't read joint in same order ??
 ps.selectPathPlanner ("VisibilityPrmPlanner") 
 ps.selectPathValidation ("Dichotomy", 0.)
-ps.saveRoadmap ('/local/mcampana/devel/hpp/data/ur2fixed-PRM.rdm')
+#ps.saveRoadmap ('/local/mcampana/devel/hpp/data/ur2fixed-PRM.rdm')
 ps.solve ()
 ps.pathLength(0)
 len(ps.getWaypoints (0))
 
 #r.client.gui.setVisibility('ur2_robot/l_sphere2',"OFF")
 #r.client.gui.setVisibility('ur2_robot/l_sphere2_second_arm',"OFF")
+
 
 import numpy as np
 
